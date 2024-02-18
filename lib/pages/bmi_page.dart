@@ -14,7 +14,7 @@ class BMIPage extends StatefulWidget {
 class _BMIPageState extends State<BMIPage> {
   double? _deviceHeight, _deviceWidth;
 
-  int _age = 25;
+  int _age = 25, _weight = 60;
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +22,22 @@ class _BMIPageState extends State<BMIPage> {
     _deviceWidth = MediaQuery.of(context).size.width;
     return CupertinoPageScaffold(
       child: Container(
-        child: Center(
-          child: _ageSelectContainer(),
+        height: _deviceHeight! * 0.85,
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                _ageSelectContainer(),
+                _weightSelectContainer(),
+              ],
+            ),
+          ],
         ),
       ),
     );
@@ -81,6 +95,75 @@ class _BMIPageState extends State<BMIPage> {
                     setState(
                       () {
                         _age++;
+                      },
+                    );
+                  },
+                  child: const Text('+'),
+                  textStyle: const TextStyle(
+                    fontSize: 25,
+                    color: Colors.blue,
+                  ),
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _weightSelectContainer() {
+    return InfoCard(
+      height: _deviceHeight! * 0.20,
+      width: _deviceWidth! * 0.45,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const Text(
+            'Weight kgs',
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+          Text(
+            _weight.toString(),
+            style: const TextStyle(
+              fontSize: 45,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: 50,
+                child: CupertinoDialogAction(
+                  key: const Key('weight_minus'),
+                  onPressed: () {
+                    setState(() {
+                      _weight--;
+                    });
+                  },
+                  child: const Text('-'),
+                  textStyle: const TextStyle(
+                    fontSize: 25,
+                    color: Colors.red,
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 50,
+                child: CupertinoDialogAction(
+                  key: const Key('weight_plus'),
+                  onPressed: () {
+                    setState(
+                      () {
+                        _weight++;
                       },
                     );
                   },
