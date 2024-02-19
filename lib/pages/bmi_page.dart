@@ -3,6 +3,7 @@ import "package:flutter/material.dart";
 import "package:ibmi/utils/calculator.dart";
 import "package:shared_preferences/shared_preferences.dart";
 import "package:ibmi/widgets/info_card.dart";
+import 'dart:developer' as developer;
 
 class BMIPage extends StatefulWidget {
   const BMIPage({super.key});
@@ -323,5 +324,6 @@ class _BMIPageState extends State<BMIPage> {
         _status,
       ],
     );
+    developer.log("\x1B[32mBMI Result Saved!\x1B[0m");
   }
 }
