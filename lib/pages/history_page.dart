@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -5,6 +7,8 @@ import 'package:ibmi/widgets/info_card.dart';
 
 class HistoryPage extends StatelessWidget {
   double? _deviceHeight, _deviceWidth;
+
+  HistoryPage({super.key});
 
   @override
   Widget build(BuildContext context) {
