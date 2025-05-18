@@ -1,4 +1,4 @@
-# ibmi
+# IBMI(Body Mass Index)
 
 A new Flutter project.
 
